@@ -5,6 +5,7 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import unusedImports from 'eslint-plugin-unused-imports';
 import perfectionist from 'eslint-plugin-perfectionist';
+import prettier from 'eslint-config-prettier';
 
 export default tseslint.config(
   {
@@ -54,4 +55,5 @@ export default tseslint.config(
       },
     },
   },
+  prettier,
 );
