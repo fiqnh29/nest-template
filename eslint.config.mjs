@@ -4,6 +4,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import unusedImports from 'eslint-plugin-unused-imports';
+import perfectionist from 'eslint-plugin-perfectionist';
 
 export default tseslint.config(
   {
@@ -12,6 +13,7 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   eslintPluginPrettierRecommended,
+  perfectionist.configs['recommended-natural'],
   {
     languageOptions: {
       globals: {
@@ -44,6 +46,12 @@ export default tseslint.config(
           argsIgnorePattern: '^_',
         },
       ],
+    },
+    settings: {
+      perfectionist: {
+        partitionByComment: true,
+        type: 'line-length',
+      },
     },
   },
 );
