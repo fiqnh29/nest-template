@@ -1,8 +1,8 @@
 import { Type } from 'class-transformer';
-import { IsNumber } from 'class-validator';
+import { IsUUID } from 'class-validator';
 
 export class ProductIdParamDto {
-  @IsNumber()
-  @Type(() => Number)
-  id: number;
+  @IsUUID()
+  @Type(() => String)
+  id: string;
 }

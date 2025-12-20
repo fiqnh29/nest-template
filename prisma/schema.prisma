@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model products {
+  id       String  @id(map: "products_pk") @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name     String  @db.VarChar
+  quantity Int @default(0)
+}
+
+enum mpaa_rating {
+  G
+  PG
+  PG_13 @map("PG-13")
+  R
+  NC_17 @map("NC-17")
+}
