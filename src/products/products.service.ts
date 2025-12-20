@@ -7,11 +7,9 @@ import { Product } from './interface/products.interface';
 export class ProductsService {
   constructor(private prisma: PrismaService) {}
 
-  async create(product: Omit<Product, 'id'>) {
+  async create(data: Omit<Product, 'id'>) {
     return await this.prisma.products.create({
-      data: {
-        name: product.name,
-      },
+      data,
     });
   }
 
@@ -43,11 +41,9 @@ export class ProductsService {
     });
   }
 
-  async update(id: string, product: Omit<Product, 'id'>) {
+  async update(id: string, data: Omit<Product, 'id'>) {
     return await this.prisma.products.update({
-      data: {
-        name: product.name,
-      },
+      data,
       where: {
         id,
       },
