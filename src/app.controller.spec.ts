@@ -16,8 +16,10 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it(`should return "Welcome to Nest Template API || Running in ${process.env.MODE} mode"`, () => {
+      expect(appController.getHello()).toBe(
+        `Welcome to Nest Template API || Running in ${process.env.MODE} mode`,
+      );
     });
   });
 });
