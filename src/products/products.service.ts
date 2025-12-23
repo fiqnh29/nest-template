@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import { PaginationOptions } from 'src/common/interfaces/pagination.interface';
 
 import { PrismaService } from '../../prisma/prisma.service';
-import { Product } from './interface/products.interface';
+import { Product } from './interfaces/products.interface';
 
 @Injectable()
 export class ProductsService {
@@ -21,9 +22,11 @@ export class ProductsService {
     });
   }
 
-  async findAll(query: { search?: string } = {}) {
+  async findAll(query: PaginationOptions & { search?: string }) {
     const keyword = query.search?.toLowerCase() ?? '';
     return await this.prisma.products.findMany({
+      skip: query.offset,
+      take: query.limit,
       where: {
         name: {
           contains: keyword,

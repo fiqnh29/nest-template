@@ -1,12 +1,9 @@
-import { IsOptional } from 'class-validator';
+import { IsOptional, IsString } from 'class-validator';
 
-export class ListProductsQueryDto {
-  @IsOptional()
-  limit?: number;
+import { PaginationDto } from '../../common/dto/pagination.dto';
 
+export class ListProductsQueryDto extends PaginationDto {
   @IsOptional()
-  page?: number;
-
-  @IsOptional()
+  @IsString()
   search?: string;
 }
